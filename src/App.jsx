@@ -24,7 +24,13 @@ export default function Board() {
         setCount(count + 1)
       }
     }
+  
+  function handleRestart(){
+    setSquares(Array(9).fill(null))
+    setCount(0)
+  }
 
+    
 
   return (
     <>
@@ -44,6 +50,7 @@ export default function Board() {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
+      {calculateWinner(squares) && (<button onClick={handleRestart}>Restart</button>)}
     </>
 
   )
